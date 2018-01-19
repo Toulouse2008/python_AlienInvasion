@@ -111,7 +111,7 @@ def change_fleet_direction(screen_settings, aliens):
 def ship_hit(screen_settings, stats, screen, sb, ship, aliens, bullets):
     '''hit by alien'''
     if stats.ship_left > 0:
-        stat.ship_left = -1
+        stats.ship_left = -1
         # update scoreboard
         sb.prep_ships()
     else:
@@ -119,7 +119,7 @@ def ship_hit(screen_settings, stats, screen, sb, ship, aliens, bullets):
         pygame.mouse.set_visible(True)
     # clear the list: aliens and bullets
     aliens.empty()
-    bullets.empy()
+    bullets.empty()
 
     # new fleet and center the ship
     create_fleet(screen_settings, screen, ship, aliens)
@@ -133,7 +133,7 @@ def check_aliens_bottom(screen_settings, stats, screen, sb, ship, aliens, bullet
     screen_rect = screen.get_rect()
     for alien in aliens.sprites():
         if alien.rect.bottom >= screen_rect.bottom:
-            shit_hit(screen_settings, stats, screen, sb, ship, aliens, bullets)
+            ship_hit(screen_settings, stats, screen, sb, ship, aliens, bullets)
             break
 
 def update_aliens(screen_settings, screen, stats, sb, ship, aliens, bullets):
