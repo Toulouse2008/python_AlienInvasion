@@ -81,7 +81,7 @@ def check_bullet_alien_collisions(screen_settings, screen, stats, sb, ship, alie
     '''Action after bullet hitting alien'''
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     if collisions:
-        for aliens in collision.values():
+        for aliens in collisions.values():
             stats.score += screen_settings.alien_points * len(aliens)
             sb.prep_score()
         check_high_score(stats, sb)
@@ -93,7 +93,7 @@ def check_bullet_alien_collisions(screen_settings, screen, stats, sb, ship, alie
         stats.level += 1
         sb.prep_level()
 
-        create_fleet(ai_settings, screen, ship, aliens)
+        create_fleet(screen_settings, screen, ship, aliens)
 
 def check_fleet_edges(screen_settings, aliens):
     '''Action if alien reaches an edge'''
@@ -136,7 +136,7 @@ def check_aliens_bottom(screen_settings, stats, screen, sb, ship, aliens, bullet
             shit_hit(screen_settings, stats, screen, sb, ship, aliens, bullets)
             break
 
-def update_aliens(screen_settings, stats, screen, sb, ship, aliens, bullets):
+def update_aliens(screen_settings, screen, stats, sb, ship, aliens, bullets):
     '''update the positions of all aliens in the fleet'''
     check_fleet_edges(screen_settings, aliens)
     aliens.update()
