@@ -1,8 +1,10 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship():
+class Ship(Sprite):
     def __init__(self, screen_settings, screen):
         '''Initialize the ship and set the starting position'''
+        super(Ship, self).__init__()
         self.screen = screen
         self.screen_settings = screen_settings
         # load the ship image and set its rectangle location
@@ -26,7 +28,7 @@ class Ship():
         self.screen.blit(self.image, self.rect)
 
     def center_ship(self):
-        self.center = self.screen_rect.centerx 
+        self.center = self.screen_rect.centerx
 
     def update(self):
         '''Update position based on movement flag'''
